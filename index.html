@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Money4Makers — Real Strategies. Real Money.</title>
+<meta name="description" content="Practical guides for everyday people to make money online — starting with $0. No fluff, no get-rich-quick schemes. Real strategies that work.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -31,6 +32,32 @@
     background: var(--white);
     color: var(--ink);
     overflow-x: hidden;
+  }
+
+  /* ── WCAG 2.2: Skip Navigation Link ── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 0 0 6px 6px;
+  }
+  .skip-link:focus { top: 0; outline: 3px solid var(--green-bright); outline-offset: 2px; }
+
+  /* ── WCAG 2.2: Global focus styles ── */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--green-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 
   /* ── NAV ── */
@@ -70,6 +97,10 @@
     font-weight: 500;
     letter-spacing: 0.03em;
     transition: color 0.2s;
+    /* WCAG 2.2: minimum touch target */
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 
   .nav-links a:hover { color: #fff; }
@@ -83,6 +114,7 @@
     font-weight: 600 !important;
     letter-spacing: 0.04em;
     transition: background 0.2s !important;
+    min-height: 44px !important;
   }
 
   .nav-cta:hover { background: #b52222 !important; color: #fff !important; }
@@ -981,6 +1013,112 @@
     max-width: 420px;
   }
 
+  /* ── COOKIE CONSENT BANNER ── */
+  .cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    z-index: 9000;
+    flex-wrap: wrap;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+
+  .cookie-banner.visible { transform: translateY(0); }
+
+  .cookie-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    flex: 1;
+    min-width: 240px;
+  }
+
+  .cookie-text a {
+    color: var(--green-bright);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .cookie-text a:focus-visible {
+    outline: 3px solid var(--green-bright);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  .cookie-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .cookie-btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    /* WCAG 2.2: minimum touch target 44px */
+    min-height: 44px;
+    min-width: 44px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cookie-btn-accept {
+    background: var(--green);
+    color: #fff;
+  }
+
+  .cookie-btn-accept:hover { background: #155f3a; }
+
+  .cookie-btn-decline {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cookie-btn-decline:hover {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+  }
+
+  /* ── WCAG 2.2: Button and input touch targets ── */
+  .btn-primary {
+    min-height: 44px;
+  }
+
+  .signup-form input,
+  .cta-form input {
+    min-height: 44px;
+  }
+
+  /* ── WCAG 2.2: Footer links touch targets ── */
+  .footer-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* ── WCAG 2.2: Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    .fade-up { opacity: 1; transform: none; }
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
@@ -1000,10 +1138,12 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Money<span>4</span>Makers</a>
-  <ul class="nav-links">
+<nav aria-label="Site navigation">
+  <a href="#" class="nav-logo" aria-label="Money4Makers home">Money<span>4</span>Makers</a>
+  <ul class="nav-links" role="list">
     <li><a href="#tiers">Start Tiers</a></li>
     <li><a href="#what-you-get">What You Get</a></li>
     <li><a href="#topics">Topics</a></li>
@@ -1040,7 +1180,8 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<main id="main-content">
+<section class="hero" aria-label="Money4Makers — Start making money with $0">
   <div class="hero-left">
     <div class="hero-eyebrow fade-up">Free guide — start making money with $0</div>
     <h1 class="hero-headline fade-up delay-1">
@@ -1111,7 +1252,10 @@
   </div>
 </section>
 
+</section>
+
 <!-- PROOF BAR -->
+<section aria-label="Key facts about Money4Makers">
 <div class="proof-bar">
   <div class="proof-item">
     <div>
@@ -1148,6 +1292,7 @@
     </div>
   </div>
 </div>
+</section>
 
 <!-- TIER BREAKDOWN -->
 <section class="tiers-section" id="tiers">
@@ -1355,23 +1500,27 @@
   <p class="cta-disclaimer">Free forever. No spam. No credit card. Unsubscribe anytime.</p>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <!-- LEFT: logo, links, copyright stacked -->
   <div class="footer-left">
-    <a href="#" class="footer-logo">Money<span>4</span>Makers</a>
-    <ul class="footer-links">
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Terms of Use</a></li>
-      <li><a href="#">Affiliate Disclosure</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+    <a href="#" class="footer-logo" aria-label="Money4Makers home">Money<span>4</span>Makers</a>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links" role="list">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-use.html">Terms of Use</a></li>
+        <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
     <span class="footer-copy">© 2026 Money<span style="color:var(--green-bright)">4</span>Makers. All rights reserved.</span>
   </div>
 
   <!-- RIGHT: social icons flush right, top-aligned with logo -->
   <div class="footer-right">
-    <div class="social-icons footer-social">
+    <div class="social-icons footer-social" role="list" aria-label="Social media links">
       <a href="https://youtube.com/@money4makers" target="_blank" rel="noopener" class="social-icon youtube" title="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
       </a>
@@ -1394,6 +1543,17 @@
   </div>
 </footer>
 
+<!-- COOKIE CONSENT BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="false" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">
+    We use essential cookies to make this site work. We'd also like to set optional analytics cookies to help us improve it. No personal data is sold. See our <a href="privacy-policy.html">Privacy Policy</a> for details.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-btn-decline" id="cookieDecline" aria-label="Decline optional cookies">Essential only</button>
+    <button class="cookie-btn cookie-btn-accept" id="cookieAccept" aria-label="Accept all cookies">Accept all</button>
+  </div>
+</div>
+
 <script>
   function handleSignup(inputId, successId) {
     const input = document.getElementById(inputId);
@@ -1403,9 +1563,11 @@
 
     if (!email || !emailRegex.test(email)) {
       input.style.borderColor = '#D42B2B';
+      input.setAttribute('aria-invalid', 'true');
       input.placeholder = 'Please enter a valid email';
       setTimeout(() => {
         input.style.borderColor = '';
+        input.removeAttribute('aria-invalid');
         input.placeholder = inputId === 'heroEmail' ? 'Enter your email address' : 'Your email address';
       }, 2000);
       return;
@@ -1413,20 +1575,72 @@
 
     input.parentElement.style.display = 'none';
     success.style.display = 'block';
+    success.setAttribute('role', 'status');
+    success.setAttribute('aria-live', 'polite');
   }
 
-  // Scroll animation for cards
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        entry.target.style.animationDelay = (i * 0.08) + 's';
-        entry.target.classList.add('fade-up');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
+  // Scroll animation for cards — respects reduced motion
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  document.querySelectorAll('.card, .topic-pill').forEach(el => observer.observe(el));
+  if (!prefersReducedMotion) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = (i * 0.08) + 's';
+          entry.target.classList.add('fade-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card, .topic-pill').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.card, .topic-pill').forEach(el => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+
+  // Cookie consent logic
+  const banner = document.getElementById('cookieBanner');
+  const acceptBtn = document.getElementById('cookieAccept');
+  const declineBtn = document.getElementById('cookieDecline');
+
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+  }
+
+  function getCookie(name) {
+    return document.cookie.split('; ').reduce((r, v) => {
+      const parts = v.split('=');
+      return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+    }, '');
+  }
+
+  // Show banner if no consent recorded
+  if (!getCookie('m4m_cookie_consent')) {
+    setTimeout(() => banner.classList.add('visible'), 800);
+  }
+
+  acceptBtn.addEventListener('click', () => {
+    setCookie('m4m_cookie_consent', 'all', 365);
+    banner.classList.remove('visible');
+    banner.setAttribute('aria-hidden', 'true');
+  });
+
+  declineBtn.addEventListener('click', () => {
+    setCookie('m4m_cookie_consent', 'essential', 365);
+    banner.classList.remove('visible');
+    banner.setAttribute('aria-hidden', 'true');
+  });
+
+  // WCAG: trap focus in banner when visible, allow Escape to decline
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && banner.classList.contains('visible')) {
+      declineBtn.click();
+    }
+  });
 </script>
 
 </body>
