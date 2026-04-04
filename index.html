@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money4Makers — Real Strategies. Real Money.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1F5C;
+    --navy-mid: #1A3A8F;
+    --navy-light: #E8EDF5;
+    --green: #1A7A4A;
+    --green-bright: #2ECC71;
+    --green-pale: #F0FFF4;
+    --red: #D42B2B;
+    --white: #F8F9FC;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --border: rgba(10,31,92,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--navy);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--green-bright); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  .nav-cta {
+    background: var(--red);
+    color: #fff !important;
+    padding: 7px 18px;
+    border-radius: 4px;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #b52222 !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    padding-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--navy);
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -40px;
+    width: 80px;
+    height: 100%;
+    background: var(--navy);
+    clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46,204,113,0.15);
+    border: 1px solid rgba(46,204,113,0.3);
+    color: var(--green-bright);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green-bright);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 6vw, 84px);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  .hero-headline .accent { color: var(--green-bright); }
+  .hero-headline .red { color: var(--red); }
+
+  .hero-sub {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 420px;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  /* form */
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 420px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .signup-form input {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .signup-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .signup-form input:focus { border-color: var(--green-bright); }
+
+  .btn-primary {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover { background: #b52222; }
+  .btn-primary:active { transform: scale(0.98); }
+
+  .form-disclaimer {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.6;
+  }
+
+  .form-disclaimer a { color: rgba(255,255,255,0.5); text-decoration: underline; }
+
+  /* hero right */
+  .hero-right {
+    background: var(--white);
+    padding: 80px 60px 80px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* ── HERO TIER MINI-CARDS ── */
+  .hero-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 420px;
+  }
+
+  .hero-tiers-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+
+  .hero-tier-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 16px rgba(10,31,92,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-tier-card:hover {
+    box-shadow: 0 6px 28px rgba(10,31,92,0.1);
+    transform: translateY(-2px);
+  }
+
+  .hero-tier-card.featured {
+    border: 2px solid var(--green);
+  }
+
+  .hero-tier-card.featured::before {
+    content: 'START HERE';
+    position: absolute;
+    top: 0; right: 0;
+    background: var(--green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 0 6px 0 6px;
+  }
+
+  .tier-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    min-width: 72px;
+    text-align: center;
+  }
+
+  .tier-amount.zero { color: var(--green); }
+  .tier-amount.fifty { color: var(--navy-mid); }
+  .tier-amount.hundred { color: var(--navy); }
+
+  .tier-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  .tier-info { flex: 1; }
+
+  .tier-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+
+  .tier-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tier-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .tier-tag.free { background: var(--green-pale); color: var(--green); }
+  .tier-tag.mid { background: #EEF1FC; color: var(--navy-mid); }
+  .tier-tag.full { background: var(--navy-light); color: var(--navy); }
+
+  /* ── TIER BREAKDOWN SECTION ── */
+  .tiers-section {
+    padding: 80px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .tier-full-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    background: #fff;
+  }
+
+  .tier-full-card:hover {
+    box-shadow: 0 8px 36px rgba(10,31,92,0.09);
+    transform: translateY(-3px);
+  }
+
+  .tier-full-card.featured-tier {
+    border: 2px solid var(--green);
+  }
+
+  .tier-header {
+    padding: 28px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .tier-header.zero-bg { background: var(--green-pale); }
+  .tier-header.fifty-bg { background: #EEF1FC; }
+  .tier-header.hundred-bg { background: var(--navy-light); }
+
+  .tier-popular-badge {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: var(--green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  .tier-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .tier-price.p-zero { color: var(--green); }
+  .tier-price.p-fifty { color: var(--navy-mid); }
+  .tier-price.p-hundred { color: var(--navy); }
+
+  .tier-price-label {
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .tier-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .tier-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .tier-body {
+    padding: 24px 28px 28px;
+  }
+
+  .tier-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .tier-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .check {
+    width: 18px; height: 18px;
+    background: var(--green-pale);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check::after {
+    content: '';
+    width: 5px; height: 8px;
+    border-right: 2px solid var(--green);
+    border-bottom: 2px solid var(--green);
+    transform: rotate(45deg) translate(-1px, -1px);
+  }
+
+  .tier-income {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+  }
+
+  .tier-income-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .tier-income-range {
+    font-family: 'DM Mono', monospace;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--green);
+  }
+
+  .tier-income-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* ── GUIDE CARD (moved to CTA) ── */
+  .guide-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 28px 32px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    text-align: left;
+  }
+
+  .guide-card-inner {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .guide-icon {
+    width: 52px; height: 52px;
+    background: rgba(46,204,113,0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+
+  .guide-text-block { flex: 1; }
+
+  .guide-badge {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 8px;
+  }
+
+  .guide-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+
+  .guide-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .avatar {
+    width: 36px; height: 36px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--green-bright);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .guide-author { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .guide-author strong { color: var(--ink); font-weight: 500; }
+
+  /* ── SOCIAL PROOF BAR ── */
+  .proof-bar {
+    background: var(--navy-light);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--navy);
+  }
+
+  .proof-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .proof-label { color: var(--muted); font-size: 12px; }
+
+  .proof-divider {
+    width: 1px; height: 32px;
+    background: var(--border);
+  }
+
+  /* ── WHAT YOU GET ── */
+  .section {
+    padding: 80px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 4vw, 52px);
+    letter-spacing: 0.03em;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 48px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 32px rgba(10,31,92,0.08);
+    transform: translateY(-2px);
+  }
+
+  .card-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(10,31,92,0.25);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .card-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .card-accent {
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 40px;
+    background: var(--green);
+    border-radius: 0 0 3px 0;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--navy);
+    padding: 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .about-label span { color: var(--green-bright); display: block; }
+
+  .about-text {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .about-text strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+  /* ── TOPICS ── */
+  .topics-section {
+    padding: 80px;
+    background: var(--white);
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .topic-pill {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: default;
+  }
+
+  .topic-pill:hover {
+    border-color: var(--green);
+    background: var(--green-pale);
+  }
+
+  .topic-dot {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── BOTTOM CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '$';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 400px;
+    color: rgba(255,255,255,0.02);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 5vw, 68px);
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cta-title span { color: var(--green-bright); }
+
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+
+  .cta-form {
+    display: flex;
+    gap: 10px;
+    max-width: 480px;
+    margin: 0 auto 14px;
+    justify-content: center;
+  }
+
+  .cta-form input {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .cta-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .cta-form input:focus { border-color: var(--green-bright); }
+
+  .cta-disclaimer {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    position: relative;
+  }
+
+  /* ── SOCIAL ICONS ── */
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .social-icon {
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+
+  .social-icon:hover {
+    background: rgba(255,255,255,0.16);
+    border-color: rgba(255,255,255,0.28);
+    transform: translateY(-2px);
+  }
+
+  .social-icon svg {
+    width: 15px; height: 15px;
+    fill: rgba(255,255,255,0.7);
+    transition: fill 0.2s;
+  }
+
+  .social-icon:hover svg { fill: #fff; }
+
+  /* footer social icons — slightly muted */
+  .footer-social .social-icon {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.08);
+    width: 30px; height: 30px;
+  }
+
+  .footer-social .social-icon svg {
+    width: 13px; height: 13px;
+    fill: rgba(255,255,255,0.35);
+  }
+
+  .footer-social .social-icon:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .footer-social .social-icon:hover svg { fill: rgba(255,255,255,0.75); }
+
+  .footer-middle { display: none; }
+
+  /* ── SOCIAL ICONS — YouTube and TikTok active; others pending ── */
+  .nav-links .social-icons { display: flex; }
+  .footer-right { display: flex; }
+
+  /* Hide unconfirmed platforms */
+  .social-icon.instagram,
+  .social-icon.twitter,
+  .social-icon.reddit,
+  .social-icon.twitch { display: none; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 32px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .footer-logo span { color: var(--green-bright); }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+
+  /* ── SUCCESS STATE ── */
+  .success-msg {
+    display: none;
+    background: var(--green-pale);
+    border: 1px solid rgba(26,122,74,0.3);
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 20px;
+    border-radius: 4px;
+    max-width: 420px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 60px 32px; }
+    .hero-left::after { display: none; }
+    .hero-right { padding: 40px 32px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-strip { grid-template-columns: 1fr; padding: 48px 32px; gap: 24px; }
+    .section { padding: 56px 32px; }
+    .topics-section { padding: 56px 32px; }
+    .cta-section { padding: 56px 32px; }
+    footer { padding: 24px 32px; }
+    .proof-bar { padding: 18px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Money<span>4</span>Makers</a>
+  <ul class="nav-links">
+    <li><a href="#tiers">Start Tiers</a></li>
+    <li><a href="#what-you-get">What You Get</a></li>
+    <li><a href="#topics">Topics</a></li>
+    <li>
+      <div class="social-icons">
+        <!-- YouTube -->
+        <a href="https://youtube.com/@money4makers" target="_blank" rel="noopener" class="social-icon youtube" title="YouTube">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@money4makers" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com/money4makers" target="_blank" rel="noopener" class="social-icon instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="https://x.com/money4makers" target="_blank" rel="noopener" class="social-icon twitter" title="X / Twitter">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+        </a>
+        <!-- Reddit -->
+        <a href="https://reddit.com/r/money4makers" target="_blank" rel="noopener" class="social-icon reddit" title="Reddit">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        </a>
+        <!-- Twitch -->
+        <a href="https://twitch.tv/money4makers" target="_blank" rel="noopener" class="social-icon twitch" title="Twitch">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        </a>
+      </div>
+    </li>
+    <li><a href="#signup" class="nav-cta">Get the Free Guide</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow fade-up">Free guide — start making money with $0</div>
+    <h1 class="hero-headline fade-up delay-1">
+      Real<br>
+      <span class="accent">strategies.</span><br>
+      Real<br>
+      <span class="red">money.</span>
+    </h1>
+    <p class="hero-sub fade-up delay-2">
+      <strong>No fluff. No get-rich-quick nonsense.</strong> Just proven, practical ways everyday people are building real income online — starting with nothing but time and a plan.
+    </p>
+
+    <div id="signup" class="signup-form fade-up delay-3">
+      <div class="form-row">
+        <input type="email" id="heroEmail" placeholder="Enter your email address" />
+        <button class="btn-primary" onclick="handleSignup('heroEmail', 'heroSuccess')">
+          Get the Free Guide →
+        </button>
+      </div>
+      <div class="success-msg" id="heroSuccess">
+        ✓ You're in. Check your inbox for the free guide.
+      </div>
+      <p class="form-disclaimer">
+        Free. No spam. Unsubscribe anytime. By signing up you agree to our <a href="#">Privacy Policy</a>.
+      </p>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="fade-up delay-2">
+      <p class="hero-tiers-label">Pick your starting point</p>
+      <p style="font-size:13px; color:var(--muted); margin-bottom:20px; line-height:1.6;">57% of American adults are living paycheck to paycheck — 72% of Gen Z and 65% of millennials included. Whatever your starting point, there's a path here for you.</p>
+      <div class="hero-tiers">
+
+        <div class="hero-tier-card featured">
+          <div class="tier-amount zero">$0</div>
+          <div class="tier-divider"></div>
+          <div class="tier-info">
+            <div class="tier-name">Zero to Income</div>
+            <div class="tier-desc">No money needed. Time and a free tool stack are your only investment.</div>
+          </div>
+          <span class="tier-tag free">FREE</span>
+        </div>
+
+        <div class="hero-tier-card">
+          <div class="tier-amount fifty">$50</div>
+          <div class="tier-divider"></div>
+          <div class="tier-info">
+            <div class="tier-name">The Accelerator</div>
+            <div class="tier-desc">A small budget that opens faster paths and better tools.</div>
+          </div>
+          <span class="tier-tag mid">FASTER</span>
+        </div>
+
+        <div class="hero-tier-card">
+          <div class="tier-amount hundred">$100</div>
+          <div class="tier-divider"></div>
+          <div class="tier-info">
+            <div class="tier-name">Full Launch</div>
+            <div class="tier-desc">The complete toolkit. Maximum options, shortest runway to income.</div>
+          </div>
+          <span class="tier-tag full">MAX ROI</span>
+        </div>
+
+      </div>
+      <p style="font-size:11px; color:var(--muted); margin-top:16px;">↓ See the full breakdown below</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div>
+      <div class="proof-num">$0</div>
+      <div class="proof-label">to start — seriously</div>
+    </div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-num">7 days</div>
+      <div class="proof-label">to first income</div>
+    </div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-num">100%</div>
+      <div class="proof-label">practical, no theory</div>
+    </div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-num">Free</div>
+      <div class="proof-label">always. no paywall</div>
+    </div>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <div>
+      <div class="proof-num">No fluff</div>
+      <div class="proof-label">direct and actionable</div>
+    </div>
+  </div>
+</div>
+
+<!-- TIER BREAKDOWN -->
+<section class="tiers-section" id="tiers">
+  <p class="section-label">Choose your path</p>
+  <h2 class="section-title">Start where you are.<br>Not where you wish you were.</h2>
+  <p class="section-sub">As of 2025, 57% of American adults are living paycheck to paycheck — rising to 72% among Gen Z and 65% among millennials (MarketWatch Guides). Most money-making content ignores that financial distress. We don't. Every tier below is built around what real people actually have — including nothing at all.</p>
+
+  <div class="tiers-grid">
+
+    <!-- $0 TIER -->
+    <div class="tier-full-card featured-tier">
+      <div class="tier-header zero-bg">
+        <div class="tier-popular-badge">Most Accessible</div>
+        <div class="tier-price p-zero">$0</div>
+        <div class="tier-price-label">startup cost</div>
+        <div class="tier-title">Zero to Income</div>
+        <div class="tier-subtitle">For anyone living paycheck to paycheck. Your only investment is time.</div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li><span class="check"></span>Freelance services on Upwork &amp; Fiverr — free to join</li>
+          <li><span class="check"></span>Free portfolio site via GitHub Pages or Carrd free tier</li>
+          <li><span class="check"></span>AI writing tools — free tiers of ChatGPT &amp; Claude</li>
+          <li><span class="check"></span>Email newsletter via Beehiiv free plan (up to 2,500 subs)</li>
+          <li><span class="check"></span>Reddit &amp; Quora for organic traffic — no ad spend needed</li>
+          <li><span class="check"></span>Affiliate links from day one — earn commissions on free tools</li>
+          <li><span class="check"></span>Digital product sales via Gumroad — 0% fees on free plan</li>
+        </ul>
+        <div class="tier-income">
+          <div class="tier-income-label">Realistic 30-day income</div>
+          <div class="tier-income-range">$200 – $1,500</div>
+          <div class="tier-income-note">Depends on hours invested and skills applied</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- $50 TIER -->
+    <div class="tier-full-card">
+      <div class="tier-header fifty-bg">
+        <div class="tier-price p-fifty">$50</div>
+        <div class="tier-price-label">startup cost</div>
+        <div class="tier-title">The Accelerator</div>
+        <div class="tier-subtitle">A small budget that unlocks faster tools and a more credible presence.</div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li><span class="check"></span>Everything in the $0 tier, plus:</li>
+          <li><span class="check"></span>Domain name for your brand (~$12/yr via Namecheap)</li>
+          <li><span class="check"></span>Carrd Pro portfolio site (~$19/yr) — looks professional</li>
+          <li><span class="check"></span>One month of ChatGPT Plus (~$20) — faster content creation</li>
+          <li><span class="check"></span>Canva free tier for graphics — no design skills needed</li>
+          <li><span class="check"></span>Basic email outreach to 20–30 potential clients per day</li>
+          <li><span class="check"></span>First digital product (template, guide) sold via Gumroad</li>
+        </ul>
+        <div class="tier-income">
+          <div class="tier-income-label">Realistic 30-day income</div>
+          <div class="tier-income-range">$800 – $3,500</div>
+          <div class="tier-income-note">Portfolio site and tools significantly improve conversion</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- $100 TIER -->
+    <div class="tier-full-card">
+      <div class="tier-header hundred-bg">
+        <div class="tier-price p-hundred">$100</div>
+        <div class="tier-price-label">startup cost</div>
+        <div class="tier-title">Full Launch</div>
+        <div class="tier-subtitle">The complete toolkit. Maximum options and the shortest runway to meaningful income.</div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li><span class="check"></span>Everything in the $50 tier, plus:</li>
+          <li><span class="check"></span>AI video tool (HeyGen or D-ID) — faceless content creation</li>
+          <li><span class="check"></span>ElevenLabs voice (~$5/mo) — professional AI voiceover</li>
+          <li><span class="check"></span>Beehiiv Scale plan — advanced analytics and monetization</li>
+          <li><span class="check"></span>Canva Pro (~$15/mo) — premium templates and brand kit</li>
+          <li><span class="check"></span>Budget for first paid digital product or mini-course</li>
+          <li><span class="check"></span>Reserve for unexpected tools or one-time platform fees</li>
+        </ul>
+        <div class="tier-income">
+          <div class="tier-income-label">Realistic 30-day income</div>
+          <div class="tier-income-range">$2,000 – $7,000</div>
+          <div class="tier-income-note">Full toolkit enables multiple simultaneous income streams</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="section" id="what-you-get">
+  <p class="section-label">What you get</p>
+  <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+  <p class="section-sub">Every piece of content on <strong>Money<span style="color:var(--green-bright)">4</span>Makers</strong> is built around one question: can you act on this today with what you actually have? If the answer is no, it doesn't belong here.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">01</div>
+      <span class="card-icon">📋</span>
+      <div class="card-title">Step-by-step playbooks</div>
+      <p class="card-text">Not "10 tips" listicles. Actual playbooks with day-by-day actions, real dollar figures, and the tools to execute them.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">02</div>
+      <span class="card-icon">🔧</span>
+      <div class="card-title">Tool reviews that tell the truth</div>
+      <p class="card-text">We test every tool we recommend. If it doesn't deliver real results for real people, we say so — even if we lose the affiliate commission.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">03</div>
+      <span class="card-icon">🤖</span>
+      <div class="card-title">AI money strategies</div>
+      <p class="card-text">The AI gold rush is real — but most people are chasing hype. We show you the specific use cases that are generating actual income right now.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">04</div>
+      <span class="card-icon">📊</span>
+      <div class="card-title">Real numbers, not screenshots</div>
+      <p class="card-text">Anyone can screenshot a Stripe dashboard. We break down the mechanics: what it took, what it cost, what actually worked, and what failed.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">05</div>
+      <span class="card-icon">✉️</span>
+      <div class="card-title">Weekly newsletter</div>
+      <p class="card-text">One actionable idea every week. Delivered to your inbox. No filler. If it can't be summed up in a single clear takeaway, it doesn't get sent.</p>
+    </div>
+    <div class="card">
+      <div class="card-accent"></div>
+      <div class="card-num">06</div>
+      <span class="card-icon">🎯</span>
+      <div class="card-title">Zero prerequisites</div>
+      <p class="card-text">You don't need an audience, a degree, capital, or prior experience. Every guide is written for the person starting from scratch today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-label">
+    Why<br>
+    <span>this</span>
+    site?
+  </div>
+  <div class="about-text">
+    The internet is full of people telling you to <strong>"follow your passion"</strong> and <strong>"hustle harder."</strong> That's not advice. That's noise.<br><br>
+    <strong>Money<span style="color:var(--green-bright)">4</span>Makers</strong> exists because most money-making content is built to sell you something — a course, a coaching program, a dream. We're built differently. <strong>The guides are free. The advice is direct. The goal is your first real dollar — not our next sale.</strong><br><br>
+    We make money through affiliate partnerships with the tools we already use and recommend. If we wouldn't use it ourselves, it doesn't appear here.
+  </div>
+</div>
+
+<!-- TOPICS -->
+<section class="topics-section" id="topics">
+  <p class="section-label">Topics we cover</p>
+  <h2 class="section-title">Pick your path.</h2>
+  <p class="section-sub">Whether you have $0 or $100, 2 hours or 14, a skill or none — there's a path here for you.</p>
+
+  <div class="topics-grid">
+    <div class="topic-pill"><span class="topic-dot"></span>AI-powered income</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Freelance &amp; services</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Digital products &amp; ebooks</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Newsletter monetization</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Affiliate marketing</div>
+    <div class="topic-pill"><span class="topic-dot"></span>No-code tools &amp; apps</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Domain &amp; web assets</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Remote work &amp; side hustles</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Faceless content</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Dropshipping &amp; e-commerce</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Directory &amp; listing sites</div>
+    <div class="topic-pill"><span class="topic-dot"></span>Print-on-demand &amp; niche sites</div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">Ready to make<br><span>your first dollar?</span></h2>
+  <p class="cta-sub">Join thousands of everyday people getting the free weekly guide — one actionable idea, zero fluff, every week.</p>
+
+  <div class="guide-card">
+    <div class="guide-card-inner">
+      <div class="guide-icon">💰</div>
+      <div class="guide-text-block">
+        <div class="guide-badge">FREE DOWNLOAD</div>
+        <div class="guide-title">7 Proven Ways to Make Money Online Starting With $0</div>
+        <div class="guide-desc">The exact strategies — researched and tested — that everyday people are using right now to generate real income without spending a single dollar first.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-form">
+    <input type="email" id="ctaEmail" placeholder="Your email address" />
+    <button class="btn-primary" onclick="handleSignup('ctaEmail', 'ctaSuccess')">
+      Get the Free Guide →
+    </button>
+  </div>
+  <div class="success-msg" id="ctaSuccess" style="margin: 0 auto 14px; text-align: left;">
+    ✓ You're in. Check your inbox for the free guide.
+  </div>
+  <p class="cta-disclaimer">Free forever. No spam. No credit card. Unsubscribe anytime.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <!-- LEFT: logo, links, copyright stacked -->
+  <div class="footer-left">
+    <a href="#" class="footer-logo">Money<span>4</span>Makers</a>
+    <ul class="footer-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Use</a></li>
+      <li><a href="#">Affiliate Disclosure</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 Money<span style="color:var(--green-bright)">4</span>Makers. All rights reserved.</span>
+  </div>
+
+  <!-- RIGHT: social icons flush right, top-aligned with logo -->
+  <div class="footer-right">
+    <div class="social-icons footer-social">
+      <a href="https://youtube.com/@money4makers" target="_blank" rel="noopener" class="social-icon youtube" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@money4makers" target="_blank" rel="noopener" class="social-icon tiktok" title="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+      </a>
+      <a href="https://instagram.com/money4makers" target="_blank" rel="noopener" class="social-icon instagram" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+      </a>
+      <a href="https://x.com/money4makers" target="_blank" rel="noopener" class="social-icon twitter" title="X / Twitter">
+        <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+      </a>
+      <a href="https://reddit.com/r/money4makers" target="_blank" rel="noopener" class="social-icon reddit" title="Reddit">
+        <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+      </a>
+      <a href="https://twitch.tv/money4makers" target="_blank" rel="noopener" class="social-icon twitch" title="Twitch">
+        <svg viewBox="0 0 24 24"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSignup(inputId, successId) {
+    const input = document.getElementById(inputId);
+    const success = document.getElementById(successId);
+    const email = input.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailRegex.test(email)) {
+      input.style.borderColor = '#D42B2B';
+      input.placeholder = 'Please enter a valid email';
+      setTimeout(() => {
+        input.style.borderColor = '';
+        input.placeholder = inputId === 'heroEmail' ? 'Enter your email address' : 'Your email address';
+      }, 2000);
+      return;
+    }
+
+    input.parentElement.style.display = 'none';
+    success.style.display = 'block';
+  }
+
+  // Scroll animation for cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationDelay = (i * 0.08) + 's';
+        entry.target.classList.add('fade-up');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card, .topic-pill').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
