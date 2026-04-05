@@ -708,42 +708,29 @@
   .nav-hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
   .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  /* ── Mobile nav drawer ── */
+  /* ── Mobile nav drawer — hidden by default on all screens ── */
   .nav-mobile-drawer {
-    display: none; /* shown only inside mobile media queries */
+    display: none;
     position: fixed;
     top: 56px;
     left: 0; right: 0;
-    bottom: 0; /* full height so backdrop covers page */
+    bottom: 0;
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.08);
     z-index: 98;
-    padding: 0;
     overflow-y: auto;
-    /* closed state */
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0.25s;
   }
-  .nav-mobile-drawer.open {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0);
-    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0s;
-  }
+  .nav-mobile-drawer.open { display: block; }
 
-  /* Backdrop overlay behind drawer */
+  /* Backdrop — hidden by default */
   .nav-backdrop {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.45);
+    background: rgba(0,0,0,0.5);
     z-index: 97;
-    opacity: 0;
-    transition: opacity 0.25s ease;
   }
-  .nav-backdrop.open { opacity: 1; }
+  .nav-backdrop.open { display: block; }
   .nav-mobile-links {
     list-style: none;
     padding: 12px 0 8px;
@@ -841,8 +828,6 @@
     /* Show hamburger, hide desktop nav links */
     .nav-hamburger { display: flex; }
     .nav-links { display: none; }
-    .nav-mobile-drawer { display: block; }
-    .nav-backdrop { display: block; }
 
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left {
@@ -903,8 +888,6 @@
     /* Show hamburger, hide desktop nav links */
     .nav-hamburger { display: flex; }
     .nav-links { display: none; }
-    .nav-mobile-drawer { display: block; }
-    .nav-backdrop { display: block; }
 
     /* Hero */
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -993,10 +976,11 @@
     .cookie-btn { flex: 1; text-align: center; padding: 12px 16px; }
   }
 
-  /* ── Desktop: 1025px+ (ensure nav-hamburger stays hidden) ── */
+  /* ── Desktop: 1025px+ ── */
   @media (min-width: 1025px) {
     .nav-hamburger { display: none !important; }
     .nav-mobile-drawer { display: none !important; }
+    .nav-backdrop { display: none !important; }
   }
 
 </style>
@@ -1397,18 +1381,21 @@
   const mobileDrawer = document.getElementById('navMobileDrawer');
   const navBackdrop = document.getElementById('navBackdrop');
   const mobileLinks = document.querySelectorAll('.nav-mobile-link');
+  let menuOpen = false;
 
   function openMenu() {
+    menuOpen = true;
     hamburger.classList.add('open');
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Close navigation menu');
     mobileDrawer.classList.add('open');
-    mobileDrawer.setAttribute('aria-hidden', 'false');
+    mobileDrawer.removeAttribute('aria-hidden');
     navBackdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
+    menuOpen = false;
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Open navigation menu');
@@ -1418,22 +1405,10 @@
     document.body.style.overflow = '';
   }
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.contains('open') ? closeMenu() : openMenu();
-  });
-
-  // Close menu when a nav link is tapped
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-
-  // Close menu when backdrop is tapped
+  hamburger.addEventListener('click', () => { menuOpen ? closeMenu() : openMenu(); });
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
   navBackdrop.addEventListener('click', closeMenu);
-
-  // Close menu on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && hamburger.classList.contains('open')) closeMenu();
-  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) closeMenu(); });
 </script>
 
 </body>
