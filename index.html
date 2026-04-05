@@ -63,7 +63,7 @@
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 201;
     background: var(--navy);
     padding: 0 2rem;
     height: 56px;
@@ -714,11 +714,13 @@
     position: fixed;
     top: 56px;
     left: 0; right: 0;
-    bottom: 0;
+    height: calc(100vh - 56px);
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.08);
-    z-index: 98;
-    overflow-y: auto;
+    z-index: 200;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 40px;
   }
   .nav-mobile-drawer.open { display: block; }
 
@@ -726,9 +728,9 @@
   .nav-backdrop {
     display: none;
     position: fixed;
-    inset: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0,0,0,0.5);
-    z-index: 97;
+    z-index: 199;
   }
   .nav-backdrop.open { display: block; }
   .nav-mobile-links {
