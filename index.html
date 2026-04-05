@@ -710,26 +710,40 @@
 
   /* ── Mobile nav drawer ── */
   .nav-mobile-drawer {
-    display: none;
+    display: none; /* shown only inside mobile media queries */
     position: fixed;
     top: 56px;
     left: 0; right: 0;
+    bottom: 0; /* full height so backdrop covers page */
     background: var(--navy);
     border-top: 1px solid rgba(255,255,255,0.08);
-    z-index: 99;
+    z-index: 98;
     padding: 0;
-    max-height: calc(100vh - 56px);
     overflow-y: auto;
-    transform: translateY(-8px);
+    /* closed state */
+    visibility: hidden;
     opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    pointer-events: none;
+    transform: translateY(-6px);
+    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0.25s;
   }
   .nav-mobile-drawer.open {
-    transform: translateY(0);
+    visibility: visible;
     opacity: 1;
-    pointer-events: all;
+    transform: translateY(0);
+    transition: transform 0.25s ease, opacity 0.2s ease, visibility 0s linear 0s;
   }
+
+  /* Backdrop overlay behind drawer */
+  .nav-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 97;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .nav-backdrop.open { opacity: 1; }
   .nav-mobile-links {
     list-style: none;
     padding: 12px 0 8px;
@@ -828,6 +842,7 @@
     .nav-hamburger { display: flex; }
     .nav-links { display: none; }
     .nav-mobile-drawer { display: block; }
+    .nav-backdrop { display: block; }
 
     .hero { grid-template-columns: 1fr; min-height: auto; }
     .hero-left {
@@ -889,6 +904,7 @@
     .nav-hamburger { display: flex; }
     .nav-links { display: none; }
     .nav-mobile-drawer { display: block; }
+    .nav-backdrop { display: block; }
 
     /* Hero */
     .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -1029,6 +1045,9 @@
     <span></span>
   </button>
 </nav>
+
+<!-- Mobile nav backdrop -->
+<div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
 
 <!-- Mobile nav drawer -->
 <nav class="nav-mobile-drawer" id="navMobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
@@ -1238,18 +1257,22 @@
     <h2 id="topics-heading" class="section-title">Pick your path.</h2>
     <p class="section-sub">Whether you have $0 or $100, 2 hours or 14, a skill or none — there's a path here for you.</p>
     <div class="topics-grid">
-      <div class="topic-pill"><span class="topic-dot"></span>AI-powered income</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Freelance &amp; services</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Digital products &amp; ebooks</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Newsletter monetization</div>
+      <div class="topic-pill"><span class="topic-dot"></span>AI income &amp; faceless content</div>
       <div class="topic-pill"><span class="topic-dot"></span>Affiliate marketing</div>
-      <div class="topic-pill"><span class="topic-dot"></span>No-code tools &amp; apps</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Domain &amp; web assets</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Remote work &amp; side hustles</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Faceless content</div>
       <div class="topic-pill"><span class="topic-dot"></span>Dropshipping &amp; e-commerce</div>
-      <div class="topic-pill"><span class="topic-dot"></span>Directory &amp; listing sites</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Freelance &amp; services</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Remote work &amp; side hustles</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Digital products &amp; ebooks</div>
       <div class="topic-pill"><span class="topic-dot"></span>Print-on-demand &amp; niche sites</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Podcasts &amp; audio content</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Newsletter monetization</div>
+      <div class="topic-pill"><span class="topic-dot"></span>No-code tools &amp; apps</div>
+      <div class="topic-pill"><span class="topic-dot"></span>3D printing &amp; physical products</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Domain &amp; web assets</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Directory &amp; listing sites</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Crypto, NFTs &amp; Web3 income</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Polymarket, Kalshi &amp; prediction markets</div>
+      <div class="topic-pill"><span class="topic-dot"></span>Sweepstakes &amp; prize strategies</div>
     </div>
   </section>
 
@@ -1372,6 +1395,7 @@
   /* ── Hamburger menu ── */
   const hamburger = document.getElementById('navHamburger');
   const mobileDrawer = document.getElementById('navMobileDrawer');
+  const navBackdrop = document.getElementById('navBackdrop');
   const mobileLinks = document.querySelectorAll('.nav-mobile-link');
 
   function openMenu() {
@@ -1380,6 +1404,7 @@
     hamburger.setAttribute('aria-label', 'Close navigation menu');
     mobileDrawer.classList.add('open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
+    navBackdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
 
@@ -1389,6 +1414,7 @@
     hamburger.setAttribute('aria-label', 'Open navigation menu');
     mobileDrawer.classList.remove('open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
+    navBackdrop.classList.remove('open');
     document.body.style.overflow = '';
   }
 
@@ -1400,6 +1426,9 @@
   mobileLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
   });
+
+  // Close menu when backdrop is tapped
+  navBackdrop.addEventListener('click', closeMenu);
 
   // Close menu on Escape key
   document.addEventListener('keydown', (e) => {
