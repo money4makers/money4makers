@@ -59,7 +59,7 @@
   }
 
   /* ── NAV — legal page: logo + back link only ── */
-  nav {
+  nav[aria-label="Site navigation"] {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 201;
@@ -276,7 +276,7 @@
 
   /* ── Mobile landscape: 481px–767px ── */
   @media (min-width: 481px) and (max-width: 767px) {
-    nav { padding: 0 1.5rem; }
+    nav[aria-label="Site navigation"] { padding: 0 1.5rem; }
     .nav-back { font-size: 12px; }
     .page-header { padding: 80px 24px 40px; }
     .page-title { font-size: clamp(36px, 8vw, 52px); }
@@ -293,7 +293,7 @@
 
   /* ── Mobile portrait: 320px–480px ── */
   @media (max-width: 480px) {
-    nav { padding: 0 1rem; }
+    nav[aria-label="Site navigation"] { padding: 0 1rem; }
     .nav-logo { font-size: 19px; }
     .nav-back { font-size: 12px; gap: 4px; }
     .page-header { padding: 76px 20px 36px; }
