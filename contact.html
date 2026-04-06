@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Money4Makers.com</title>
+<meta name="description" content="Contact Money4Makers.com — get in touch with questions, feedback, or partnership inquiries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1F5C;
+    --navy-mid: #1A3A8F;
+    --navy-light: #E8EDF5;
+    --green: #1A7A4A;
+    --green-bright: #2ECC71;
+    --green-pale: #F0FFF4;
+    --red: #D42B2B;
+    --white: #F8F9FC;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --border: rgba(10,31,92,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 0 0 6px 6px;
+  }
+  .skip-link:focus { top: 0; outline: 3px solid var(--green-bright); outline-offset: 2px; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--green-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  nav[aria-label="Site navigation"] {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 201;
+    background: var(--navy);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--green-bright); }
+
+  .nav-back {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+  .nav-back:hover { color: #fff; }
+
+  .page-header {
+    background: var(--navy);
+    padding: 100px 80px 60px;
+  }
+
+  .page-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 64px);
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .page-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 520px;
+  }
+
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* Contact cards grid — 5 cards, 2 columns, last card centered */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .contact-card:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 10px);
+    margin: 0 auto;
+  }
+
+  .contact-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .contact-card:hover { box-shadow: 0 6px 28px rgba(10,31,92,0.08); transform: translateY(-2px); }
+
+  .contact-card-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .contact-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  .contact-card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .contact-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26,122,74,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-card-link:hover { color: var(--navy); border-color: var(--navy); }
+
+  /* Response time notice */
+  .response-notice {
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .response-notice-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .response-notice-text { font-size: 14px; color: var(--navy); line-height: 1.6; }
+  .response-notice-text strong { font-weight: 600; }
+
+  .section-block {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-block:last-child { border-bottom: none; }
+
+  .section-block h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .section-block p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .section-block p:last-child { margin-bottom: 0; }
+
+  .section-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .section-block ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .section-block ul li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  .section-block a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  footer {
+    background: var(--ink);
+    padding: 32px 80px;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .footer-logo span { color: var(--green-bright); }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.6); }
+  .footer-links a[aria-current="page"] { color: rgba(255,255,255,0.6); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    nav[aria-label="Site navigation"] { padding: 0 1.5rem; }
+    .page-header { padding: 88px 48px 48px; }
+    .content { padding: 48px 32px 64px; }
+    footer { padding: 28px 48px; }
+    .footer-links { gap: 14px; }
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    nav[aria-label="Site navigation"] { padding: 0 1.5rem; }
+    .nav-back { font-size: 12px; }
+    .page-header { padding: 80px 24px 40px; }
+    .page-title { font-size: clamp(36px, 8vw, 52px); }
+    .page-sub { font-size: 14px; }
+    .content { padding: 36px 24px 56px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 14px; }
+    .contact-card:last-child { grid-column: auto; max-width: 100%; margin: 0; }
+    .contact-card { padding: 22px; }
+    .section-block { margin-bottom: 32px; padding-bottom: 32px; }
+    .section-block h2 { font-size: 16px; }
+    .section-block p, .section-block ul li { font-size: 14px; }
+    footer { padding: 24px; }
+    .footer-links { gap: 10px; }
+    .footer-links a { font-size: 11px; min-height: 40px; }
+  }
+
+  @media (max-width: 480px) {
+    nav[aria-label="Site navigation"] { padding: 0 1rem; }
+    .nav-logo { font-size: 19px; }
+    .nav-back { font-size: 12px; gap: 4px; }
+    .page-header { padding: 76px 20px 36px; }
+    .page-label { font-size: 10px; }
+    .page-title { font-size: clamp(32px, 9vw, 44px); }
+    .page-sub { font-size: 14px; }
+    .content { padding: 28px 20px 48px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 36px; }
+    .contact-card:last-child { grid-column: auto; max-width: 100%; margin: 0; }
+    .contact-card { padding: 20px; }
+    .response-notice { padding: 16px 18px; gap: 10px; }
+    .response-notice-text { font-size: 13px; }
+    .section-block { margin-bottom: 28px; padding-bottom: 28px; }
+    .section-block h2 { font-size: 15px; margin-bottom: 10px; }
+    .section-block p, .section-block ul li { font-size: 14px; line-height: 1.7; }
+    footer { padding: 20px; }
+    .footer-links { gap: 8px; }
+    .footer-links a { font-size: 11px; min-height: 40px; }
+    .footer-copy { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Site navigation">
+  <a href="index.html" class="nav-logo" aria-label="Money4Makers.com — return to homepage">Money<span>4</span>Makers</a>
+  <a href="index.html" class="nav-back" aria-label="Back to homepage">← Back to Home</a>
+</nav>
+
+<header class="page-header">
+  <p class="page-label" aria-hidden="true">Get in touch</p>
+  <h1 class="page-title">Contact</h1>
+  <p class="page-sub">Questions, feedback, corrections, or partnership inquiries — we read every message and respond to every legitimate inquiry.</p>
+</header>
+
+<main id="main-content" class="content">
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <span class="contact-card-icon">✉️</span>
+      <div class="contact-card-title">General inquiries</div>
+      <p class="contact-card-desc">Questions about our content, strategies, or tools? Reach out directly.</p>
+      <a href="mailto:general@money4makers.com" class="contact-card-link">general@money4makers.com →</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-card-icon">🔒</span>
+      <div class="contact-card-title">Privacy &amp; data requests</div>
+      <p class="contact-card-desc">To exercise your CCPA or GDPR rights, request data deletion, or report a privacy concern.</p>
+      <a href="mailto:privacy@money4makers.com" class="contact-card-link">privacy@money4makers.com →</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-card-icon">🤝</span>
+      <div class="contact-card-title">Partnerships &amp; affiliates</div>
+      <p class="contact-card-desc">Interested in an affiliate or content partnership? Tell us about your product or platform.</p>
+      <a href="mailto:partner@money4makers.com" class="contact-card-link">partner@money4makers.com →</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-card-icon">✏️</span>
+      <div class="contact-card-title">Content corrections</div>
+      <p class="contact-card-desc">Found an error in one of our guides or strategies? We take accuracy seriously and will fix it promptly.</p>
+      <a href="mailto:content@money4makers.com" class="contact-card-link">content@money4makers.com →</a>
+    </div>
+    <div class="contact-card">
+      <span class="contact-card-icon">📰</span>
+      <div class="contact-card-title">Media</div>
+      <p class="contact-card-desc">Press inquiries, interview requests, or media kit information — reach our media contact directly.</p>
+      <a href="mailto:media@money4makers.com" class="contact-card-link">media@money4makers.com →</a>
+    </div>
+  </div>
+
+  <div class="response-notice" role="note">
+    <span class="response-notice-icon">⏱️</span>
+    <p class="response-notice-text"><strong>Response time:</strong> We aim to respond to all inquiries within 2 business days. Privacy and data-related requests will be addressed within 30 days as required by applicable law. We do not respond to spam, unsolicited pitches, or requests to purchase or link-exchange.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>What we can help with</h2>
+    <ul>
+      <li>Questions about our content, guides, or strategies.</li>
+      <li>Corrections or factual disputes with published content.</li>
+      <li>Accessibility issues or accommodation requests.</li>
+      <li>Privacy and data rights requests (CCPA, GDPR).</li>
+      <li>Affiliate and content partnership inquiries.</li>
+      <li>Newsletter subscription issues (unsubscribe, missing emails).</li>
+    </ul>
+  </div>
+
+  <div class="section-block">
+    <h2>What we don't respond to</h2>
+    <ul>
+      <li>Unsolicited guest post or link exchange requests.</li>
+      <li>Requests to promote products we have not vetted.</li>
+      <li>Spam or automated inquiry submissions.</li>
+      <li>Requests for personalized financial or legal advice.</li>
+    </ul>
+    <p>For financial or legal questions, please consult a qualified professional.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>Social media</h2>
+    <p>You can also find us on the following platforms. Social media messages are monitored but email is the fastest way to reach us for anything requiring a detailed response.</p>
+    <ul>
+      <li>YouTube: <a href="https://youtube.com/@money4makers" target="_blank" rel="noopener noreferrer">youtube.com/@money4makers</a></li>
+      <li>TikTok: <a href="https://tiktok.com/@money4makers" target="_blank" rel="noopener noreferrer">tiktok.com/@money4makers</a></li>
+    </ul>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-left">
+    <a href="index.html" class="footer-logo" aria-label="Money4Makers.com homepage">Money<span>4</span>Makers</a>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-use.html">Terms of Use</a></li>
+        <li><a href="affiliate-disclosure.html">Affiliate Disclosure</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="footer-copy">© 2026 Money<span style="color:var(--green-bright)">4</span>Makers.com. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
