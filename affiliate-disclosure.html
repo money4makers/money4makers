@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affiliate Disclosure — Money4Makers.com</title>
+<meta name="description" content="Affiliate Disclosure for Money4Makers.com — how we earn commissions and how that affects our content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A1F5C;
+    --navy-mid: #1A3A8F;
+    --navy-light: #E8EDF5;
+    --green: #1A7A4A;
+    --green-bright: #2ECC71;
+    --green-pale: #F0FFF4;
+    --red: #D42B2B;
+    --white: #F8F9FC;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --border: rgba(10,31,92,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--green);
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 9999;
+    border-radius: 0 0 6px 6px;
+  }
+  .skip-link:focus { top: 0; outline: 3px solid var(--green-bright); outline-offset: 2px; }
+
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--green-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  nav[aria-label="Site navigation"] {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 201;
+    background: var(--navy);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--green-bright); }
+
+  .nav-back {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+  .nav-back:hover { color: #fff; }
+
+  .page-header {
+    background: var(--navy);
+    padding: 100px 80px 60px;
+  }
+
+  .page-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-bright);
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 5vw, 64px);
+    letter-spacing: 0.03em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .page-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  .highlight-box {
+    background: var(--green-pale);
+    border: 1px solid rgba(26,122,74,0.25);
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .highlight-box p {
+    font-size: 14px;
+    color: var(--green);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .section-block {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-block:last-child { border-bottom: none; }
+
+  .section-block h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .section-block p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .section-block p:last-child { margin-bottom: 0; }
+
+  .section-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+  }
+
+  .section-block ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .section-block ul li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+
+  .section-block a {
+    color: var(--green);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* FTC notice block */
+  .ftc-box {
+    background: var(--navy-light);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .ftc-box p {
+    font-size: 13px;
+    color: var(--navy);
+    line-height: 1.7;
+    margin: 0;
+    font-family: 'DM Mono', monospace;
+  }
+
+  footer {
+    background: var(--ink);
+    padding: 32px 80px;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .footer-logo span { color: var(--green-bright); }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.6); }
+  .footer-links a[aria-current="page"] { color: rgba(255,255,255,0.6); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'DM Mono', monospace;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    nav[aria-label="Site navigation"] { padding: 0 1.5rem; }
+    .page-header { padding: 88px 48px 48px; }
+    .content { padding: 48px 32px 64px; }
+    footer { padding: 28px 48px; }
+    .footer-links { gap: 14px; }
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    nav[aria-label="Site navigation"] { padding: 0 1.5rem; }
+    .nav-back { font-size: 12px; }
+    .page-header { padding: 80px 24px 40px; }
+    .page-title { font-size: clamp(36px, 8vw, 52px); }
+    .content { padding: 36px 24px 56px; }
+    .highlight-box { padding: 16px 18px; }
+    .ftc-box { padding: 16px 18px; }
+    .section-block { margin-bottom: 32px; padding-bottom: 32px; }
+    .section-block h2 { font-size: 16px; }
+    .section-block p, .section-block ul li { font-size: 14px; }
+    footer { padding: 24px; }
+    .footer-links { gap: 10px; }
+    .footer-links a { font-size: 11px; min-height: 40px; }
+  }
+
+  @media (max-width: 480px) {
+    nav[aria-label="Site navigation"] { padding: 0 1rem; }
+    .nav-logo { font-size: 19px; }
+    .nav-back { font-size: 12px; gap: 4px; }
+    .page-header { padding: 76px 20px 36px; }
+    .page-label { font-size: 10px; }
+    .page-title { font-size: clamp(32px, 9vw, 44px); }
+    .page-meta { font-size: 11px; }
+    .content { padding: 28px 20px 48px; }
+    .highlight-box { padding: 14px 16px; margin-bottom: 28px; }
+    .highlight-box p { font-size: 13px; }
+    .ftc-box { padding: 14px 16px; margin-bottom: 28px; }
+    .ftc-box p { font-size: 12px; }
+    .section-block { margin-bottom: 28px; padding-bottom: 28px; }
+    .section-block h2 { font-size: 15px; margin-bottom: 10px; }
+    .section-block p, .section-block ul li { font-size: 14px; line-height: 1.7; }
+    footer { padding: 20px; }
+    .footer-links { gap: 8px; }
+    .footer-links a { font-size: 11px; min-height: 40px; }
+    .footer-copy { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav aria-label="Site navigation">
+  <a href="index.html" class="nav-logo" aria-label="Money4Makers.com — return to homepage">Money<span>4</span>Makers</a>
+  <a href="index.html" class="nav-back" aria-label="Back to homepage">← Back to Home</a>
+</nav>
+
+<header class="page-header">
+  <p class="page-label" aria-hidden="true">Legal</p>
+  <h1 class="page-title">Affiliate Disclosure</h1>
+  <p class="page-meta">
+    <time datetime="2026-04-06">Effective date: April 6, 2026</time>
+    &nbsp;·&nbsp;
+    <time datetime="2026-04-06">Last updated: April 6, 2026</time>
+  </p>
+</header>
+
+<main id="main-content" class="content">
+
+  <div class="highlight-box" role="note" aria-label="Plain English summary">
+    <p><strong>Plain English summary:</strong> Some links on this site earn us a commission if you click and buy. This costs you nothing extra. We only recommend tools we actually use and believe in. Our honest opinion is never for sale.</p>
+  </div>
+
+  <div class="ftc-box" role="note" aria-label="FTC disclosure notice">
+    <p>⚖️ FTC DISCLOSURE: In accordance with the Federal Trade Commission's guidelines on endorsements and testimonials (16 C.F.R. § 255), Money4Makers.com discloses that this site contains affiliate links. We may receive compensation when you purchase products or services through these links.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>1. What affiliate marketing means</h2>
+    <p>Affiliate marketing is a performance-based arrangement where we earn a small commission when you click a link on our site and complete a purchase or sign-up on a third-party platform. The commission comes from the merchant — not from you. You pay the same price whether or not you use our link.</p>
+    <p>This is one of the primary ways Money4Makers.com generates revenue, which allows us to keep all of our guides, strategies, and newsletter content free for everyone.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>2. Which links may be affiliate links</h2>
+    <p>Any link on Money4Makers.com that points to a third-party product, tool, platform, or service may be an affiliate link. This includes links in:</p>
+    <ul>
+      <li>Articles, guides, and how-to content.</li>
+      <li>Tool reviews and comparisons.</li>
+      <li>Our weekly newsletter.</li>
+      <li>The tier breakdown and tool recommendations on our homepage.</li>
+    </ul>
+    <p>We do not mark every individual affiliate link with a separate disclosure label, but this page serves as our site-wide disclosure in compliance with FTC guidelines.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>3. Current affiliate partnerships</h2>
+    <p>As of the effective date of this disclosure, Money4Makers.com has or is pursuing affiliate relationships with the following platforms and services:</p>
+    <ul>
+      <li>Beehiiv — newsletter platform.</li>
+      <li>Namecheap — domain registration.</li>
+      <li>Carrd — website builder.</li>
+      <li>ChatGPT / OpenAI — AI writing tools.</li>
+      <li>HeyGen — AI video creation.</li>
+    </ul>
+    <p>This list may be updated as new partnerships are established. The absence of a tool from this list does not mean a link to it is not an affiliate link — this list reflects our primary partnerships and will be updated periodically.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>4. Our editorial standards</h2>
+    <p>Affiliate relationships do not influence our content, recommendations, or editorial assessments. We only recommend tools and services that we have personally used, researched, or believe provide genuine value to our readers.</p>
+    <p>If a tool we previously recommended no longer meets our standards, we will update or remove our recommendation — regardless of any affiliate relationship. Our credibility with our readers is more valuable than any commission.</p>
+    <p>We will never recommend a product solely because it pays a higher commission, and we will always disclose when a tool does not have an affiliate program so you know our recommendation is entirely uncompensated.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>5. No additional cost to you</h2>
+    <p>Using our affiliate links does not increase the price you pay for any product or service. In some cases, our affiliate links may provide you with a discount or bonus that would not be available through a direct purchase. Where such benefits exist, we will note them clearly.</p>
+  </div>
+
+  <div class="section-block">
+    <h2>6. Questions about our affiliates</h2>
+    <p>If you have any questions about our affiliate relationships or want to know whether a specific recommendation is compensated, please contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:privacy@money4makers.com">privacy@money4makers.com</a></li>
+      <li>Website: <a href="https://money4makers.com">money4makers.com</a></li>
+    </ul>
+    <p>We will always answer honestly.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-left">
+    <a href="index.html" class="footer-logo" aria-label="Money4Makers.com homepage">Money<span>4</span>Makers</a>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links">
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-use.html">Terms of Use</a></li>
+        <li><a href="affiliate-disclosure.html" aria-current="page">Affiliate Disclosure</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <span class="footer-copy">© 2026 Money<span style="color:var(--green-bright)">4</span>Makers.com. All rights reserved.</span>
+  </div>
+</footer>
+
+</body>
+</html>
