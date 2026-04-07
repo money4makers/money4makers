@@ -188,21 +188,49 @@ nav {
 .signup-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 480px;
+  gap: 14px;
+  max-width: 420px;
 }
 
-/* ── BEEHIIV EMBED ── */
+/* ── HERO SUBSCRIBE BUTTON ── */
+.btn-hero-subscribe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green-bright);
+  color: var(--navy);
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 16px 28px;
+  border-radius: 4px;
+  min-height: 52px;
+  transition: background 0.2s, transform 0.1s;
+  width: 100%;
+  text-align: center;
+}
+.btn-hero-subscribe:hover { background: #27ae60; transform: translateY(-1px); }
+.btn-hero-subscribe:active { transform: scale(0.98); }
+
+/* ── BEEHIIV EMBED WRAPPER (CTA section) ── */
+.beehiiv-embed-wrapper {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
 .beehiiv-embed {
   display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-  min-height: 80px;
-  border: none !important;
-  background: transparent !important;
+  width: 100%;
+  height: 100px;
+  border: none;
+  margin: 0;
 }
-.signup-form .beehiiv-embed { max-width: 480px; }
-.cta-form .beehiiv-embed { max-width: 540px; margin: 0 auto; display: block; }
 
 .form-disclaimer {
   font-size: 11px;
@@ -512,7 +540,7 @@ nav {
 .guide-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; color: #fff; line-height: 1.1; margin-bottom: 6px; }
 .guide-desc { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
-.cta-form { max-width: 540px; margin: 0 auto 14px; }
+.cta-form { max-width: 540px; margin: 0 auto 20px; }
 .cta-disclaimer { font-size: 11px; color: rgba(255,255,255,0.3); position: relative; }
 
 /* ── SOCIAL ICONS ── */
@@ -750,6 +778,7 @@ footer {
   .cta-section { padding: 64px 48px; }
   .guide-card { max-width: 100%; }
   .cta-form { max-width: 100%; }
+  .beehiiv-embed-wrapper { max-width: 100%; }
   footer { padding: 28px 48px; grid-template-columns: 1fr; gap: 20px; }
   .footer-right { justify-content: flex-start; }
 }
@@ -765,6 +794,7 @@ footer {
   .hero-headline { font-size: clamp(48px, 8vw, 64px); }
   .hero-sub { font-size: 15px; max-width: 100%; }
   .signup-form { max-width: 100%; }
+  .btn-hero-subscribe { font-size: 14px; padding: 14px 20px; }
   .proof-bar { padding: 14px 24px; gap: 12px; justify-content: flex-start; }
   .proof-divider { display: none; }
   .proof-item { flex: 0 0 calc(50% - 6px); }
@@ -781,6 +811,7 @@ footer {
   .guide-card { padding: 20px; }
   .guide-card-inner { flex-direction: column; gap: 14px; }
   .cta-form { max-width: 100%; }
+  .beehiiv-embed-wrapper { max-width: 100%; }
   footer { padding: 24px; grid-template-columns: 1fr; gap: 16px; }
   .footer-right { justify-content: flex-start; }
   .footer-links { gap: 12px; }
@@ -800,6 +831,7 @@ footer {
   .hero-headline { font-size: clamp(44px, 11vw, 58px); }
   .hero-sub { font-size: 14px; max-width: 100%; margin-bottom: 28px; }
   .signup-form { max-width: 100%; }
+  .btn-hero-subscribe { font-size: 13px; padding: 14px 16px; }
   .hero-tiers { max-width: 100%; }
   .hero-tier-card { padding: 14px 16px; gap: 12px; }
   .tier-amount { font-size: 28px; min-width: 56px; }
@@ -834,6 +866,7 @@ footer {
   .guide-icon { width: 44px; height: 44px; font-size: 22px; }
   .guide-title { font-size: 18px; }
   .cta-form { max-width: 100%; }
+  .beehiiv-embed-wrapper { max-width: 100%; }
   footer { padding: 24px 20px; grid-template-columns: 1fr; gap: 16px; }
   .footer-right { justify-content: flex-start; }
   .footer-links { gap: 8px; }
