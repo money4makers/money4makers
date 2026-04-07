@@ -65,6 +65,8 @@ nav {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   letter-spacing: 0;
+  word-spacing: 0;
+  white-space: nowrap;
   color: #fff;
   text-decoration: none;
   display: flex;
@@ -597,7 +599,7 @@ footer {
   align-items: start;
 }
 .footer-left { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 1; display: flex; align-items: center; gap: 8px; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0; word-spacing: 0; white-space: nowrap; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 1; display: flex; align-items: center; gap: 8px; }
 .footer-logo span { color: var(--green-bright); }
 .footer-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
 .footer-links a {
