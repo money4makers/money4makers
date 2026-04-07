@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
 </head>
 <body>
 
@@ -69,11 +70,14 @@
         <strong>No fluff. No get-rich-quick nonsense.</strong> Just proven, practical ways everyday people are building real income online — starting with nothing but time and a plan.
       </p>
       <div id="signup" class="signup-form fade-up delay-3">
-        <div class="form-row">
-          <input type="email" id="heroEmail" placeholder="Enter your email address" aria-label="Email address" />
-          <button class="btn-primary" onclick="handleSignup('heroEmail', 'heroSuccess')">Get the Free Guide →</button>
-        </div>
-        <div class="success-msg" id="heroSuccess" role="status">✓ You're in. Check your inbox for the free guide.</div>
+        <iframe
+          src="https://subscribe-forms.beehiiv.com/f61e1db0-c300-41db-8a26-cabae5d8f6cf"
+          class="beehiiv-embed"
+          data-test-id="beehiiv-embed"
+          frameborder="0"
+          scrolling="no"
+          style="width:100%; height:207px; margin:0; border-radius:0px !important; background-color:transparent; box-shadow:none; max-width:100%;"
+        ></iframe>
         <p class="form-disclaimer">Free. No spam. Unsubscribe anytime. By signing up you agree to our <a href="privacy-policy.html">Privacy Policy</a>.</p>
       </div>
     </div>
@@ -271,10 +275,15 @@
       </div>
     </div>
     <div class="cta-form">
-      <input type="email" id="ctaEmail" placeholder="Your email address" aria-label="Email address" />
-      <button class="btn-primary" onclick="handleSignup('ctaEmail', 'ctaSuccess')">Get the Free Guide →</button>
+      <iframe
+        src="https://subscribe-forms.beehiiv.com/f61e1db0-c300-41db-8a26-cabae5d8f6cf"
+        class="beehiiv-embed"
+        data-test-id="beehiiv-embed"
+        frameborder="0"
+        scrolling="no"
+        style="width:100%; height:207px; margin:0; border-radius:0px !important; background-color:transparent; box-shadow:none; max-width:100%;"
+      ></iframe>
     </div>
-    <div class="success-msg" id="ctaSuccess" style="margin: 0 auto 14px; text-align: left;" role="status">✓ You're in. Check your inbox for the free guide.</div>
     <p class="cta-disclaimer">Free forever. No spam. No credit card. Unsubscribe anytime.</p>
   </section>
 
@@ -311,5 +320,6 @@
 </div>
 
 <script src="scripts.js"></script>
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 </body>
 </html>
