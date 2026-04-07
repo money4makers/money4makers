@@ -55,7 +55,7 @@ nav {
   z-index: 201;
   background: var(--navy);
   padding: 0 2rem;
-  height: 56px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -109,7 +109,7 @@ nav {
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
-  padding-top: 56px;
+  padding-top: 68px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -692,8 +692,8 @@ footer {
 .nav-mobile-drawer {
   display: none;
   position: fixed;
-  top: 56px; left: 0; right: 0;
-  height: calc(100vh - 56px);
+  top: 68px; left: 0; right: 0;
+  height: calc(100vh - 68px);
   background: var(--navy);
   border-top: 1px solid rgba(255,255,255,0.08);
   z-index: 200;
