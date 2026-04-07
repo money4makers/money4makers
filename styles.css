@@ -55,7 +55,7 @@ nav {
   z-index: 201;
   background: var(--navy);
   padding: 0 2rem;
-  height: 96px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,9 +67,6 @@ nav {
   letter-spacing: 0.06em;
   color: #fff;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 .nav-logo span { color: var(--green-bright); }
 
@@ -109,7 +106,7 @@ nav {
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
-  padding-top: 96px;
+  padding-top: 56px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   position: relative;
@@ -597,7 +594,7 @@ footer {
   align-items: start;
 }
 .footer-left { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 1; display: flex; align-items: center; gap: 8px; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); text-decoration: none; line-height: 1; }
 .footer-logo span { color: var(--green-bright); }
 .footer-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
 .footer-links a {
@@ -692,8 +689,8 @@ footer {
 .nav-mobile-drawer {
   display: none;
   position: fixed;
-  top: 96px; left: 0; right: 0;
-  height: calc(100vh - 96px);
+  top: 56px; left: 0; right: 0;
+  height: calc(100vh - 56px);
   background: var(--navy);
   border-top: 1px solid rgba(255,255,255,0.08);
   z-index: 200;
